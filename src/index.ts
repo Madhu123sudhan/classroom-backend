@@ -3,10 +3,14 @@ import express from "express";
 import cors from "cors";
 import subjectsRouter from "./routes/subjects";
 import securityMiddleware from "./middleware/security";
+import {toNodeHandler} from "better-auth/node";
+import {auth} from "./lib/auth";
 
 
 const app = express();
 const PORT = 8000;
+
+app.all('/api/auth/*splat', toNodeHandler(auth));
 
 const frontendUrl = process.env.FRONTEND_URL;
 if (!frontendUrl) {
