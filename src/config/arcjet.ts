@@ -1,7 +1,7 @@
 import arcjet, {detectBot, shield, slidingWindow} from "@arcjet/node";
 
 // Get your site key from https://app.arcjet.com and set it as an environment
-if (!process.env.ARCJET_KEY && process.env.NOD_ENV !== 'test') {
+if (!process.env.ARCJET_KEY && process.env.NODE_ENV !== 'test') {
     throw new Error('ARCJET_KEY env is required');
 }
 // variable rather than hard coding.
