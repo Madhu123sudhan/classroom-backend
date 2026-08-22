@@ -11,7 +11,7 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     /* Project structure */
-    "rootDir": "src",
+    "rootDir": ".",
     "outDir": "dist",
     /* Type safety */
     "strict": true,
@@ -30,6 +30,7 @@
     ]
   },
   "include": [
-    "src"
+    "src",
+    "seed"
   ]
 }

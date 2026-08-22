@@ -1,5 +1,6 @@
-import {boolean, index, pgEnum, pgTable, text, timestamp} from "drizzle-orm/pg-core";
+import {boolean, index, pgEnum, pgTable, text, timestamp, uniqueIndex} from "drizzle-orm/pg-core";
 import {relations} from "drizzle-orm";
+
 
 export const roleEnum = pgEnum("role", ["student", "teacher", "admin"]);
 
@@ -48,6 +49,10 @@ export const account = pgTable("account", {
     updatedAt: timestamp('updated_at').defaultNow().$onUpdate(() => new Date()).notNull(),
 }, (table) => [
     index("account_user_id_idx").on(table.userId),
+    uniqueIndex("account_provider_account_idx").on(
+        table.providerId,
+        table.accountId
+    ),
 ]);
 
 export const verification = pgTable("verification", {
